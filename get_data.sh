@@ -5,6 +5,8 @@ echo ""
 
 cwd=$(echo $PWD)
 
+mkdir -p Data
+
 cd Data
 
 # Decagon data
