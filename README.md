@@ -5,11 +5,11 @@
 The data we use is downloaded from: 
 - http://snap.stanford.edu/decagon/ 
 - https://wiki.nci.nih.gov/display/NCIDTPdata/NCI-ALMANAC
-- ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/latest/
 
 you can use the ```get_data.sh``` and ```unzip_data.sh``` scripts to download them
 
-- download SMILES from https://pubchem.ncbi.nlm.nih.gov/pc_fetch/pc_fetch.cgi
+SMILES have been downloaded from from https://pubchem.ncbi.nlm.nih.gov/pc_fetch/pc_fetch.cgi after creating a 
+list of all CIDs with ````save_CID_list.py````
 
 ## Environment setup
 
