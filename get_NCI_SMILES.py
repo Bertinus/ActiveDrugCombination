@@ -28,4 +28,4 @@ for name in tqdm(name_list):
 
 compound_names['smiles'] = smiles_list
 
-compound_names.to_csv("Data/NCI/ComboCompoundNames_all_with_smiles.csv")
+compound_names.to_csv("Data/NCI/ComboCompoundNames_all_with_smiles.csv", index=False)
