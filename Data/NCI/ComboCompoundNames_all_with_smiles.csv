@@ -1,7 +1,7 @@
 0,1,smiles
 740,Methotrexate,CN(Cc1cnc2nc(N)nc(N)c2n1)c3ccc(cc3)C(=O)N[C@@H](CCC(O)=O)C(O)=O
 740,Trexall,[Na+].CN(Cc1cnc2nc(N)nc(N)c2n1)c3ccc(cc3)C(=O)N[C@@H](CCC([O-])=O)C(O)=O
-740,Abitrexate,[Na+].[Na+].CN(Cc1cnc2nc(N)nc(N)c2n1)c3ccc(cc3)C(=O)NC(CCC([O-])=O)C([O-])=O
+740,Abitrexate,-1
 740,Mexate,CN(Cc1cnc2nc(N)nc(N)c2n1)c3ccc(cc3)C(=O)N[C@@H](CCC(O)=O)C(O)=O
 740,Folex,CCCCSP(SCCCC)SCCCC
 740,Amethopterin,CN(Cc1cnc2nc(N)nc(N)c2n1)c3ccc(cc3)C(=O)NC(CCC(O)=O)C(O)=O

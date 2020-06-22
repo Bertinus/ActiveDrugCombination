@@ -11,6 +11,8 @@ you can use the ```get_data.sh``` and ```unzip_data.sh``` scripts to download th
 SMILES have been downloaded from from https://pubchem.ncbi.nlm.nih.gov/pc_fetch/pc_fetch.cgi after creating a 
 list of all CIDs with ````save_CID_list.py````
 
+We also use the Drug Repurposing Knowledge Graph from https://github.com/gnn4dr/DRKG
+
 ## Environment setup
 
 Set up a conda environment for the project using the provided specification file:
