@@ -1,4 +1,4 @@
-# Effect of drug combination prediction using Active Learning
+# Predicting the effect of drug combinations: an Active Learning Approach
 
 ## Data
 
