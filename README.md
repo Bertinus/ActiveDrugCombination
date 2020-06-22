@@ -13,6 +13,9 @@ For the Decagon data, we retrieve the SMILES of the compound from https://pubche
 We create a list of CIDs with the ````save_CID_list.py```` script and upload the list to PubChem. 
 The resulting file is already provided in ```Data/Decagon/SMILES.txt```
 
+For the NCI data, we retrieve SMILES using the ````get_NCI_SMILES.py```` script. The resulting file 
+```Data/NCI/ComboCompoundNames_all_with_smiles.csv``` is already provided
+
 ## DRKG data
 
 We use the Drug Repurposing Knowledge Graph from https://github.com/gnn4dr/DRKG
