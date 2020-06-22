@@ -28,6 +28,8 @@ We use data from ```http://drugcombdb.denglab.org/download```
 
 Run ````get_drug_comb_data.py```` to download this data
 
+Ressource to understand the different synergy scores: [link](https://www.researchgate.net/publication/282281738_Searching_for_Drug_Synergy_in_Complex_Dose-Response_Landscapes_Using_an_Interaction_Potency_Model/link/560a5b4208ae1396914bba65/download)
+
 ## Environment setup
 
 Set up a conda environment for the project using the provided specification file:
