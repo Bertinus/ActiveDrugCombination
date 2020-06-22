@@ -13,5 +13,7 @@ list of all CIDs with ````save_CID_list.py````
 
 ## Environment setup
 
-TODO: Create spec file and explain how to use it to setup conda environment
+Set up a conda environment for the project using the provided specification file:
+
+```conda create --name myenv --file spec-file.txt```
 
