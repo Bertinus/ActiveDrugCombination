@@ -6,6 +6,7 @@ The CID_list.txt file is uploaded to PubChem in order to retrieve the SMILES
 SMILES are made available in the file SMILES.txt
 """
 import pandas as pd
+import os
 
 # Load Decagon data
 
@@ -23,6 +24,9 @@ CID_list.extend(list(combo_effect['STITCH 2']))
 CID_list.extend(list(drug_target['STITCH']))
 CID_list.extend(list(drug_target_all['STITCH']))
 
-with open("Data/CID_list.txt", 'w') as output:
+with open("Data/Decagon/CID_list.txt", 'w') as output:
     for row in set(CID_list):
         output.write(str(row)[3:] + '\n')
+
+print("Data/Decagon/CID_list.txt", "saved! You can upload it to https://pubchem.ncbi.nlm.nih.gov/pc_fetch/pc_fetch.cgi"
+                                   " and save the resulting file in Data/Decagon/SMILES.txt")
