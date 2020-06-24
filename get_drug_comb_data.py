@@ -15,7 +15,7 @@ def download_file(dir, url):
                 f.write(chunk)
 
 
-if __name__ == '__main__':
+def download_drugcomb_data():
     print("Downloading DrugComb data, it can take a while...")
     if not os.path.exists("Data/DrugComb"):
         os.makedirs("Data/DrugComb")
@@ -26,3 +26,6 @@ if __name__ == '__main__':
     download_file("Data/DrugComb", "http://drugcombdb.denglab.org/download/drug_protein_links.rar")
     download_file("Data/DrugComb", "http://drugcombdb.denglab.org/download/protein_protein_links.rar")
 
+
+if __name__ == '__main__':
+    download_drugcomb_data()
