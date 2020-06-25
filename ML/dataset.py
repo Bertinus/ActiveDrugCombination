@@ -6,7 +6,7 @@ from ML.utils import load_original_data
 class DrugCombDBDataset(InMemoryDataset):
 
     def __init__(self, root="Data", transform=None, pre_transform=None):
-        self.name = "DrugCombDBDataset".lower()
+        self.name = "".lower()
         super(DrugCombDBDataset, self).__init__(root, transform, pre_transform)
         self.data, self.slices = torch.load(self.processed_paths[0])
 

@@ -34,12 +34,16 @@ def load_original_data():
     drug_chemical_info_with_fp['is_drug'] = 1
     drug_chemical_info_with_fp = drug_chemical_info_with_fp.rename(columns={'drugName': 'name'})
 
+    print("Number of drugs", len(drug_chemical_info_with_fp))
+
     # Retrieve all protein names
     all_proteins = set(protein_protein_interactions['protein1']). \
         union(set(protein_protein_interactions['protein2'])).union(set(drug_protein_link['protein']))
     protein_nodes = pd.DataFrame(all_proteins, columns=['name'])
     protein_nodes['is_drug'] = 0
     protein_nodes['has_fp'] = False
+
+    print("Number of proteins", len(protein_nodes))
 
     nodes = pd.concat((drug_chemical_info_with_fp, protein_nodes), ignore_index=True, sort=False)
     nodes = nodes.fillna(-1)
@@ -65,6 +69,8 @@ def load_original_data():
     edge_index_ppi = protein_protein_interactions[['idx_prot1', 'idx_prot2']].to_numpy().T
     edge_attr_ppi = np.zeros((edge_index_ppi.shape[1], 4))
 
+    print("Number of Prot-Prot Interactions", edge_index_ppi.shape[1])
+
     # Drug Protein interaction
     ##################################################
     drug_protein_link['idx_chemical'] = drug_protein_link['chemical'].\
@@ -74,6 +80,8 @@ def load_original_data():
     edge_index_dpi = drug_protein_link[drug_protein_link['idx_chemical'] != -1][['idx_chemical', 'idx_prot']].\
         to_numpy().T
     edge_attr_dpi = np.zeros((edge_index_dpi.shape[1], 4))
+
+    print("Number of Drug-Prot Interactions", edge_index_dpi.shape[1])
 
     # Drug Synergy scores
     ##################################################
@@ -90,6 +98,8 @@ def load_original_data():
 
     edge_index_ddi = drug_drug_edges[['idx_Drug1', 'idx_Drug2']].to_numpy().T
     edge_attr_ddi = drug_drug_edges[['ZIP', 'Bliss', 'Loewe', 'HSA']].to_numpy()
+
+    print("Number of Drug-Drug Interactions", edge_index_ddi.shape[1])
 
     # Aggregate different edges
     ##################################################
