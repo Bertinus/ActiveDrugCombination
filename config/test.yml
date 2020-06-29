@@ -1,0 +1,15 @@
+# General
+exp_id: 2
+seed: 1
+experiment_name: test
+n_epochs: 100
+
+# Model
+model:
+  GCN:
+    num_node_features: 1026
+
+# Optimizer
+optimizer:
+  Adam:
+    lr: 0.0001

@@ -109,6 +109,13 @@ def load_original_data():
     edge_index = np.concatenate((edge_index, edge_index[::-1, :]), axis=1)
     edge_attr = np.concatenate((edge_attr, edge_attr), axis=0)
 
-    return Data(x=torch.tensor(x, dtype=torch.float),
+    data = Data(x=torch.tensor(x, dtype=torch.float),
                 edge_index=torch.tensor(edge_index, dtype=torch.long),
-                edge_attr=edge_attr)
+                edge_attr=torch.tensor(edge_attr, dtype=torch.float))
+
+    # Add drug-drug interaction informations as attribute to data, useful for training
+    data.number_of_drugs = len(drug_chemical_info_with_fp)
+    data.edge_index_ddi = torch.tensor(edge_index_ddi)
+    data.edge_attr_ddi = torch.tensor(edge_attr_ddi)
+
+    return data

@@ -1,6 +1,6 @@
 import torch
 from torch_geometric.data import InMemoryDataset
-from ML.utils import load_original_data
+from ML.utils.load_data import load_original_data
 
 
 class DrugCombDBDataset(InMemoryDataset):
