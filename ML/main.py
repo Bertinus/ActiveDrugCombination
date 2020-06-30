@@ -1,5 +1,6 @@
-import os
 import click
+import sys
+sys.path.append(".")
 import ML.utils.configuration as configuration
 import ML.train as training
 

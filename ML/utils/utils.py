@@ -3,6 +3,8 @@ import numpy as np
 import random
 import os
 import dill as pickle
+from torch_geometric.utils import to_dense_adj
+from sklearn.model_selection import train_test_split
 
 
 def save_results(results, output_dir):
@@ -39,4 +41,38 @@ def set_seed(seed, cuda=False):
     torch.backends.cudnn.benchmark = False
     if cuda:
         torch.cuda.manual_seed_all(seed)
+
+
+def train_valid_split(data, train_size=0.8):
+    """
+    Adds four attributes to data:
+        mask_train,
+        mask_valid,
+        ground_truth_train,
+        ground_truth_valid
+    """
+
+    # Split edge indices and attributes
+    index_train, index_valid, attr_train, attr_valid = train_test_split(data.edge_index_ddi.T,
+                                                                        data.edge_attr_ddi,
+                                                                        train_size=train_size,
+                                                                        shuffle=True)
+
+    index_train, index_valid = index_train.T, index_valid.T
+
+    # Create masks (adjacency matrix wrt edges in each split)
+    mask_train = to_dense_adj(index_train)[0]
+    mask_valid = to_dense_adj(index_valid)[0]
+
+    # Create ground truths. Note: here we restrict ourselves to the first synergy score
+    ground_truth_train = to_dense_adj(index_train, edge_attr=attr_train)[0, :, :, 0].float()
+    ground_truth_valid = to_dense_adj(index_valid, edge_attr=attr_valid)[0, :, :, 0].float()
+
+    # Add attributes to data object
+    data.mask_train = mask_train
+    data.mask_valid = mask_valid
+    data.ground_truth_train = ground_truth_train
+    data.ground_truth_valid = ground_truth_valid
+
+    return data
 

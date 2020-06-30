@@ -5,6 +5,7 @@ import copy
 import ML.utils. configuration as configuration
 import numpy as np
 import os
+from ML.utils.utils import train_valid_split
 
 
 def train_epoch(model, optimizer, data, epoch):
@@ -12,7 +13,7 @@ def train_epoch(model, optimizer, data, epoch):
 
     optimizer.zero_grad()
     out = model.forward(data)
-    loss = model.loss(out, data)
+    loss = model.loss(out, data.mask_train, data.ground_truth_train)
 
     loss.backward()
     optimizer.step()
@@ -30,7 +31,7 @@ def evaluate_epoch(model, data, epoch):
 
     with torch.no_grad():
         out = model.forward(data)
-        loss = model.loss(out, data)
+        loss = model.loss(out, data.mask_valid, data.ground_truth_valid)
 
     loss = loss.detach()
 
@@ -56,6 +57,8 @@ def train(cfg):
     model = configuration.setup_model(cfg)
 
     optimizer = configuration.setup_optimizer(cfg)(model.parameters())
+
+    data = train_valid_split(data, train_size=0.8)
 
     best_valid_loss = np.inf
     best_model, best_epoch = None, None

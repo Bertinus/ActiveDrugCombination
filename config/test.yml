@@ -1,8 +1,8 @@
 # General
-exp_id: 2
+exp_id: 7
 seed: 1
 experiment_name: test
-n_epochs: 100
+n_epochs: 3000
 
 # Model
 model:
@@ -12,4 +12,4 @@ model:
 # Optimizer
 optimizer:
   Adam:
-    lr: 0.0001
+    lr: 0.05
