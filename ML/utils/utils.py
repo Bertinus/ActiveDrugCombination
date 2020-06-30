@@ -7,6 +7,18 @@ from torch_geometric.utils import to_dense_adj
 from sklearn.model_selection import train_test_split
 
 
+def expand_to_right_shape(m, target_shape):
+    """
+    :param m: tensor to be reshaped
+    :param target_shape:
+    :return: tensor of shape (target_shape, target_shape) with zeros added
+    """
+    output = torch.zeros((target_shape, target_shape))
+    output[:m.shape[0], :m.shape[1]] = m
+
+    return output
+
+
 def save_results(results, output_dir):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
@@ -65,14 +77,21 @@ def train_valid_split(data, train_size=0.8):
     mask_valid = to_dense_adj(index_valid)[0]
 
     # Create ground truths. Note: here we restrict ourselves to the first synergy score
-    ground_truth_train = to_dense_adj(index_train, edge_attr=attr_train)[0, :, :, 0].float()
-    ground_truth_valid = to_dense_adj(index_valid, edge_attr=attr_valid)[0, :, :, 0].float()
+    ground_truth_train = to_dense_adj(index_train, edge_attr=attr_train)[0, :, :, 3].float()
+    ground_truth_valid = to_dense_adj(index_valid, edge_attr=attr_valid)[0, :, :, 3].float()
 
-    # Add attributes to data object
+    # Add train and valid indices to data object
+    data.index_train = index_train
+    data.index_valid = index_valid
+    data.attr_train = attr_train
+    data.attr_valid = attr_valid
+
+    # Add mask and ground_truth attributes to data object
     data.mask_train = mask_train
     data.mask_valid = mask_valid
     data.ground_truth_train = ground_truth_train
     data.ground_truth_valid = ground_truth_valid
 
     return data
+
 

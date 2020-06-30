@@ -18,3 +18,18 @@ Set up a conda environment for the project using the provided specification file
 
 Note: if you want to generate the fingerprints again using ```generate_fingerprints.py```, you should use another conda environment with ```rdkit``` installed (rdkit is not provided in the specification file)
 
+
+## Running the pipeline
+
+From the ````ActiveDrugCombination```` directory, run:  
+
+````python ML/main.py --config config/test.yml````
+
+You can edit the configuration file to change the model you use, the optimizer parameters and other general parameters.
+
+## Results visualization
+
+You can use the the notebook `````Notebooks/Result_Exploration.ipynb`````. 
+
+Just change the ````experiment_name```` and ````experiment ID```` 
+in the first cell of the notebook (you should choose those parameters in the config file before running the pipeline)

@@ -1,13 +1,26 @@
 # General
-exp_id: 7
+exp_id: 8
 seed: 1
 experiment_name: test
-n_epochs: 3000
+
+# Active Learning
+active: True
+
+# Required arguments if active is True (otherwise, comment out this part)
+query_every_k_epochs: 1
+start_with_n_examples: 50
+query_n_at_a_time: 5
+
+# Note: our dataset has length 1
+n_epochs: 1
 
 # Model
 model:
-  GCN:
+#  GCN:
+#    num_node_features: 1026
+  Monte_Carlo_GCN:
     num_node_features: 1026
+    n_samples: 5
 
 # Optimizer
 optimizer:
